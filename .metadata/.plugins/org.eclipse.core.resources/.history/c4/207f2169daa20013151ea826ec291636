@@ -1,0 +1,64 @@
+import java.util.Observable;
+
+public class Model extends Observable {
+
+	int a, b, ggt;
+
+	public void setA(int a) throws EuException {
+
+		if (a < 0) {
+			throw new EuException("Eingabe darf nicht kleiner als 0 sein!");
+		}
+		this.a = a;
+	}
+
+	public void setB(int b) throws EuException {
+		if (b < 0) {
+			throw new EuException("Eingabe darf nicht kleiner als 0 sein!");
+		}
+		this.b = b;
+	}
+
+	public int getGgt() {
+		return ggt;
+	}
+
+	public Model(int a, int b) {
+		super();
+		this.a = a;
+		this.b = b;
+	}
+
+	public Model() {
+		super();
+		a = 0;
+		b = 0;
+	}
+
+	public void ggt() {
+
+		ggt = 0;
+		if (a == 0)
+			ggt = b;
+		else if (b == 0)
+			ggt = a;
+		else {
+			while (b != 0) {
+				if (a > b)
+					a = a - b;
+				else
+					b = b - a;
+			}
+		}
+		ggt = a;
+		setChanged();
+		notifyObservers();
+	}
+
+	// Formel für Bezout Koeffizienten muss noch umgesetzt werden
+	public void ggtPlusBezout() {
+		ggt = 0;
+		setChanged();
+		notifyObservers();
+	}
+}

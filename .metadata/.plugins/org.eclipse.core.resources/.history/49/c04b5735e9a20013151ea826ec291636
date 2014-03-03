@@ -1,0 +1,95 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.*;
+
+public class View extends JPanel implements ActionListener, Observer {
+
+	private static final long serialVersionUID = 1L;
+
+	private IsbnModel model;
+
+	private JButton checkDigit = new JButton("compute check Digit");
+	private JButton checkIfCorrect = new JButton("check if ISBN is correct");
+	private JButton missingBit = new JButton("find the missing bit");
+
+	private JTextField eingabeISBN = new JTextField("", 10);
+	private JTextField ausgabeISBN = new JTextField("", 10);
+
+	public View(IsbnModel model) {
+		this.model = model;
+		model.addObserver(this);
+		setBackground(Color.green);
+
+		Box box = Box.createVerticalBox();
+		box.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 50));
+
+		// Eingabefesnster
+		JLabel label1 = new JLabel("  Eingabe der ISBN");
+		label1.setAlignmentY(TOP_ALIGNMENT);
+		box.add(label1);
+		box.add(Box.createVerticalStrut(5));
+		eingabeISBN.setAlignmentX(LEFT_ALIGNMENT);
+		box.add(eingabeISBN);
+
+		// Buttons
+		box.add(Box.createVerticalStrut(15));
+		checkDigit.addActionListener(this);
+		checkDigit.setAlignmentX(LEFT_ALIGNMENT);
+		box.add(checkDigit);
+		add(box);
+
+		box.add(Box.createVerticalStrut(15));
+		checkIfCorrect.addActionListener(this);
+		checkIfCorrect.setAlignmentX(LEFT_ALIGNMENT);
+		box.add(checkIfCorrect);
+		add(box);
+
+		box.add(Box.createVerticalStrut(15));
+		missingBit.addActionListener(this);
+		missingBit.setAlignmentX(LEFT_ALIGNMENT);
+		box.add(missingBit);
+		add(box);
+
+		// Ausgabefenster
+		Box box2 = Box.createVerticalBox();
+		box2.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+		box2.add(new JLabel("  Ausgabe"));
+		box2.add(Box.createVerticalStrut(5));
+		ausgabeISBN.setAlignmentX(LEFT_ALIGNMENT);
+		ausgabeISBN.setEditable(false);
+		box2.add(ausgabeISBN);
+		add(box2);
+	}
+
+	private void readInput1() {
+		try {
+			model.setIsbn(String.valueOf(eingabeISBN.getText()));
+			model.testISBN();
+		} catch (ISBNException e) {
+			// TODO Auto-generated catch block
+			
+		}
+	}
+
+	/*
+	 * private void readInput(){ try {
+	 * model.setEingabeISBN(Integer.valueOf(eingabeISBN.getText()));
+	 * model.ausgabeISBN(); } catch (NumberFormatException nfe) {
+	 * JOptionPane.showMessageDialog(this,
+	 * "Falsches Zahlenformat","Eingabefehler",JOptionPane.ERROR_MESSAGE); } }
+	 */
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == checkDigit)
+			readInput1();
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		ausgabeISBN.setText(model.getAusgabe() + "");
+
+	}
+}
