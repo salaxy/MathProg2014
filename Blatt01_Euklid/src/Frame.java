@@ -1,10 +1,15 @@
 import java.awt.event.*;
-
 import javax.swing.*;
 
-public class Frame extends JFrame {
+/**
+ * @author Alexandra Müller
+ * @author Sebastian Röder
+ * 
+ * Aufgabenblatt 01 Euklidischer Algorithmus
+ */
 
-//}
+
+public class Frame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,13 @@
 import java.awt.event.*;
-
 import javax.swing.*;
+
+/**
+ * @author Alexandra Müller
+ * @author Sebastian Röder
+ * 
+ * Aufgabenblatt 
+ */
+
 
 public class Frame extends JFrame {
 

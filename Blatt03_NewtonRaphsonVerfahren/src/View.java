@@ -18,7 +18,6 @@ public class View extends JPanel implements ActionListener, Observer {
 	JTextField d = new JTextField("",10);
 	JTextField ausgabe = new JTextField("",5);
 	
-	44
 	public View(Model model)  {
 		this.model = model;
 		model.addObserver(this);
