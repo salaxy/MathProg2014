@@ -1,9 +1,6 @@
 import java.util.Observable;
 
-/**
- * 
- * @author Li La van RAW
- */
+
 public class IsbnModel extends Observable{
 
 	private String isbn, guelt, zahl;

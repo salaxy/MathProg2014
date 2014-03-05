@@ -11,9 +11,7 @@ public class View extends JPanel implements ActionListener, Observer {
 
 	private IsbnModel model;
 
-	private JButton checkDigit = new JButton("compute check Digit");
-	private JButton checkIfCorrect = new JButton("check if ISBN is correct");
-	private JButton missingBit = new JButton("find the missing bit");
+	private JButton compute = new JButton("compute");
 
 	private JTextField eingabeISBN = new JTextField("", 10);
 	private JTextField ausgabeISBN = new JTextField("", 10);
@@ -35,23 +33,11 @@ public class View extends JPanel implements ActionListener, Observer {
 		eingabeISBN.setAlignmentX(LEFT_ALIGNMENT);
 		box.add(eingabeISBN);
 
-		// Buttons
+		// Button
 		box.add(Box.createVerticalStrut(15));
-		checkDigit.addActionListener(this);
-		checkDigit.setAlignmentX(LEFT_ALIGNMENT);
-		box.add(checkDigit);
-		add(box);
-
-		box.add(Box.createVerticalStrut(15));
-		checkIfCorrect.addActionListener(this);
-		checkIfCorrect.setAlignmentX(LEFT_ALIGNMENT);
-		box.add(checkIfCorrect);
-		add(box);
-
-		box.add(Box.createVerticalStrut(15));
-		missingBit.addActionListener(this);
-		missingBit.setAlignmentX(LEFT_ALIGNMENT);
-		box.add(missingBit);
+		compute.addActionListener(this);
+		compute.setAlignmentX(LEFT_ALIGNMENT);
+		box.add(compute);
 		add(box);
 
 		// Ausgabefenster
@@ -86,16 +72,9 @@ public class View extends JPanel implements ActionListener, Observer {
 		}
 	}
 
-	/*
-	 * private void readInput(){ try {
-	 * model.setEingabeISBN(Integer.valueOf(eingabeISBN.getText()));
-	 * model.ausgabeISBN(); } catch (NumberFormatException nfe) {
-	 * JOptionPane.showMessageDialog(this,
-	 * "Falsches Zahlenformat","Eingabefehler",JOptionPane.ERROR_MESSAGE); } }
-	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == checkDigit)
+		if (e.getSource() == compute)
 			readInput1();
 	}
 
