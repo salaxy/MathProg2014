@@ -1,7 +1,6 @@
 import java.util.Observable;
 import java.lang.Integer;
 
-//import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 public class Model extends Observable {
 
@@ -92,13 +91,3 @@ public class Model extends Observable {
 		}
 	}
 }
-/*
- * 
- * public ZahlenUmwandeln() { this.input = "1021"; this.basis1 = 3; this.basis2
- * = 5; }
- * 
- * public static void main(String args[]) {
- * 
- * // String 1021->3 // Hornerschema // int 34 // div & mod // 114->5
- * ZahlenUmwandeln money; money = new ZahlenUmwandeln(); } }
- */
