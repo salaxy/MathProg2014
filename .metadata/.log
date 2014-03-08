@@ -1398,3 +1398,27 @@ Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.
 
 !ENTRY org.eclipse.debug.ui 4 0 2014-03-08 19:18:28.319
 !MESSAGE Tab group extension: org.eclipse.jdt.debug.ui.launchConfigurationTabGroup.remoteJavaApplication for type org.eclipse.jdt.launching.remoteJavaApplication for the * mode has been replaced by extension: org.jboss.tools.common.jdt.debug.ui.launching.launchConfigurationTabGroup.JBossRemoteJavaApplication2
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-08 19:32:31.522
+!MESSAGE NLS missing message: UsageReportPreferencePage_Description_JBDS in: org.tigris.subversion.subclipse.tools.usage.preferences.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-08 19:32:31.524
+!MESSAGE NLS missing message: UsageReportPreferencePage_AllowReporting_JBDS in: org.tigris.subversion.subclipse.tools.usage.preferences.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-08 19:32:31.526
+!MESSAGE NLS missing message: UsageReportPreferencePage_Error_Saving_JBDS in: org.tigris.subversion.subclipse.tools.usage.preferences.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-08 19:32:31.527
+!MESSAGE NLS missing message: GlobalUsageSettings_RemoteProps_URL_JBDS in: org.tigris.subversion.subclipse.tools.usage.preferences.messages
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-08 19:33:02.872
+!MESSAGE System property http.proxyHost is not set but should be proxy.fh-brandenburg.de.
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-08 19:33:02.873
+!MESSAGE System property http.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-08 19:33:02.874
+!MESSAGE System property https.proxyHost is not set but should be proxy.fh-brandenburg.de.
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-08 19:33:02.875
+!MESSAGE System property https.proxyPort is not set but should be 3128.
