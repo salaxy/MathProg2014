@@ -1,16 +1,10 @@
-package prime;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
 
-/**
- * Miller-Rabin-Test
- * @author Michael Koppen
- *
- */
-
-public class JPrimeModel{
+public class MillerRabinModel{
 	/*
 	 * int maximum					2.147.483.647
 	 * long maximum		9.223.372.036.854.775.807
@@ -56,7 +50,7 @@ public class JPrimeModel{
 	 * Einstiegsmethode zum generieren einer n-stelligen Primzahl
 	 * Ueberpruefung auf Grundlegende vorraussetzungen
 	 */
-	public BigInteger isPrimeBigRandom(int lenght) throws JPrimeException {
+	public BigInteger isPrimeBigRandom(int lenght) throws Exception {
 		boolean accept=false;
 		BigInteger n= new BigInteger("0");
 		BigDecimal rand=new BigDecimal("0");
@@ -77,7 +71,7 @@ public class JPrimeModel{
 			}
 			if ((n.signum()==-1 || n.signum()==0)) {
 				accept=false;
-//				throw new PrimeException("numberTooSmall");
+				throw new Exception("numberTooSmall");
 				
 			} else if (n.equals(ONE)) {
 				accept=false;
@@ -142,83 +136,4 @@ public class JPrimeModel{
 		return true;
 	}
 	
-	//-----------------------------------Miller-Rabin-Test fuer Long-Zahlen--------------------------------------------------
-
-//	/*
-//	 * Modulare Potenz
-//	 */
-//	private long modpow(long basis, long exponent, long modulo) {
-//		long result = 1;
-//		long gradebasis = basis;
-//		while (exponent > 0) {
-//			/*
-//			 * exponent ungerade!
-//			 */
-//			if (exponent % 2 == 1) {
-//				result = (result * gradebasis) % modulo;
-//			}
-//			/*
-//			 * exponent gerade!
-//			 */
-//			gradebasis = (gradebasis * gradebasis) % modulo;
-//			exponent /= 2;
-//		}
-//		return result;
-//	}
-//
-//	private boolean millerRabin(long isPrime) {
-//		
-//		/*
-//		 * teste alle ob deterministisch
-//		 * a= "zufällige" basis
-//		 */
-//		outer:for (int i = 0; i < zeuge.length; i++) {
-//			long a=zeuge[i];
-//			if (a < isPrime) {
-//				long s = 0;
-//				long d = isPrime - 1;
-//				/*
-//				 * bestimme s
-//				 */
-//				while (d % 2 == 0) {
-//					s++;
-//					d /= 2;
-////					System.out.println(d);
-//				}
-//				/*
-//				 * teste aktuellen ob deterministisch
-//				 */
-//				long modpow = modpow(a, d, isPrime);
-//				if (modpow != 1 && modpow != isPrime - 1) {
-//					for (long r = 1; r < s; r++) {
-//						modpow = (modpow * modpow) % isPrime;
-//						if (modpow == 1) {
-//							return false;
-//						}
-//						if (modpow == isPrime - 1) {
-//							continue outer;
-//						}
-//					}
-//					return false;
-//				}
-//			}
-//		}
-//		return true;
-//	}
-//	public boolean isPrime(int n) {
-//		if (n <= 1) {
-//			return false;
-//		} else if (n >=341550071728321l) {
-//			//kann aktuell nicht erreicht werden (übersteigt bereich int)
-//			//exception maxwert erreicht
-//			// keine deterministische rechnung mehr möglich
-//			return false;
-//		} else if (n <= 3) {
-//			return true;
-//		} else if (n % 2 == 0) {
-//			return false;
-//		} else {
-//			return millerRabin(n);
-//		}
-//	}
 }
