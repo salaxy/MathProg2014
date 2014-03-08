@@ -1,120 +1,83 @@
-package kryptologie;
-
 import java.util.Observable;
 
-/**
-  * Klasse zur Ver- und Entschlüsselung eines Textes mit der
-  * CAESAR-Verschlüsselung
-  * @version 28.10.2010
-  * @author Andy Klay, Christoph Ott, Stephan Leddin
-  */
+
 public class CaesarModel extends  Observable
 {
-    private String klartext;
-    private String geheimtext;
-    private int schluessel;
+    private String plaintext;
+    private String secrettext;
+    private int key;
 
 
-    /**
-     *  Konstruktor der Klasse CaesarModel
-     */
     public CaesarModel()
     {
-      klartext = new String("");
-      geheimtext = new String("");
-      schluessel = 0;
+      plaintext = new String("");
+      secrettext = new String("");
+      key = 0;
     }
 
-    /**
-     * setzen des Klartextes
-     * @param String - klartext
-     */
-    public void setKlartext(String txt)
+
+    public void setPlainText(String txt)
     {
-       klartext = txt;
+       plaintext = txt;
     }
     
-    /**
-     * setzen des Geheimtextes
-     * @param String - geheimtext
-     */
-    public void setGeheimtext(String txt)
+    public void setSecretText(String txt)
     {
-        geheimtext = txt;
+        secrettext = txt;
     }
     
-    /**
-     * setzen des Schluessels
-     * als kleinbuchstabe oder Großbuchstabe
-     * @param char - schlüssel
-     */
-    public void setSchluessel(char c)throws KeyException{
+    public void setKey(char c)throws Exception{
 
         if(!(((c>=65)&&(c<=90))||((c>=97)&&(c<=122)))){
-        	throw new KeyException("Nicht erlaubter Schlüssel");
+        	throw new Exception("Nicht erlaubter Schlüssel");
         }else{
 	        if((c>=65)&&(c<=90)){
-	        	schluessel = c-65; 
+	        	key = c-65; 
 	        }
 	        
 	        if((c>=97)&&(c<=122)){
-	        	schluessel = c-97; 
+	        	key = c-97; 
 	        }    	
         }
         
     }
     
-    /**
-     * setzen des Schluessels
-     * als integer
-     * @param int - schlüssel
-     */
-    private void setSchluessel(int s){
-        	schluessel = s;
+    private void setKey(int s){
+        	key = s;
     }
     
-    /**
-     * abfragen des geheimtextes
-     * @return Geheimtext
-     */
-    public String getGeheimtext()
+    public String getSecretText()
     {
-      return geheimtext;
+      return secrettext;
     }
     
-    /**
-     * abrufen des klartextes
-     * @return Klartext
-     */
-    public String getKlartext()
+    public String getPlaintext()
     {
-        return klartext;
+        return plaintext;
     }
     
     /**
-     * verschluesseln mit caesar
-     * und dem vorher festgelgten
-     * Klartext und Schluessel
+     * verschluesseln 
      */
-    public void verschluesseln()
+    public void decode()
     {
         //erzeugen eines Stringbuffers zum Anhängen der einzelnen Zeichen
         StringBuffer ergebnis =new StringBuffer();
         
         //löschen des Geheimtextes
-        this.delGeheimtext();
+        this.clearSecretText();
         
            //solange noch zeichen des klartextes zu verarbeiten sind
-           for (int n=0;n< klartext.length();n++)
+           for (int n=0;n< plaintext.length();n++)
            {
                    //wandel zeichen in Ascii-code um
-                   int w=klartext.charAt(n);
+                   int w=plaintext.charAt(n);
                    
                    //überprüfen ob zeichen ein Großbuchstabe ist
                    if((w>=65)&&(w<=90))
                    {
                      //verändern des Zeichens um schlüsselzahl
-                     w= w + schluessel;
+                     w= w + key;
                      if(w>90)
                      {
                        w=w-26;
@@ -125,7 +88,7 @@ public class CaesarModel extends  Observable
                    if((w>=97)&&(w<=122))
                    {
                      //verändern des Zeichens um schlüsselzahl
-                     w= w + schluessel;
+                     w= w + key;
                      if(w>122)
                      {
                        w=w-26;
@@ -136,7 +99,7 @@ public class CaesarModel extends  Observable
                    ergebnis.append((char)w);
            }
            //Umwandeln des stringbuffers in einen String für das Attribut des geheimtextes
-           geheimtext=ergebnis.toString();
+           secrettext=ergebnis.toString();
            
            //Observer benachrichtigen
     		setChanged();
@@ -144,29 +107,27 @@ public class CaesarModel extends  Observable
     }
     
     /**
-     * entschluesseln mit caesar
-     * und dem vorher festgelgten
-     * Geheimtext und Schluessel
+     * entschluesseln
      */
-    public void entschluesseln()
+    public void encode()
     {  
         //erzeugen eines Stringbuffers zum Anhängen der einzelnen Zeichen
         StringBuffer ergebnis =new StringBuffer();
         
         //löschen des klartextes
-        this.delKlartext();
+        this.clearPlaintext();
         
            //solange noch zeichen des geheimtextes zu verarbeiten sind
-           for (int n=0;n< geheimtext.length();n++)
+           for (int n=0;n< secrettext.length();n++)
            {
                    //wandel zeichen in Ascii-code um
-                   int w=geheimtext.charAt(n);
+                   int w=secrettext.charAt(n);
                    
                    //überprüfen ob zeichen ein Großbuchstabe ist
                    if((w>=65)&&(w<=90))
                    {
                      //verändern des Zeichens um schlüsselzahl
-                     w= w - schluessel;
+                     w= w - key;
                      if(w<65)
                      {
                        w=w+26;
@@ -177,7 +138,7 @@ public class CaesarModel extends  Observable
                    if((w>=97)&&(w<=122))
                    {
                      //verändern des Zeichens um schlüsselzahl
-                     w= w - schluessel;
+                     w= w - key;
                      if(w<97)
                      {
                        w=w+26;
@@ -188,7 +149,7 @@ public class CaesarModel extends  Observable
                    ergebnis.append((char)w);
            }
            //Umwandeln des stringbuffers in einen String für das Attribut des klartextes
-           klartext=ergebnis.toString();
+           plaintext=ergebnis.toString();
            
            //Observer benachrichtigen
     		setChanged();
@@ -199,17 +160,17 @@ public class CaesarModel extends  Observable
     /**
      * löschen des Klartextes
      */
-    public void delKlartext()
+    public void clearPlaintext()
     {
-        klartext = "";
+        plaintext = "";
     }
     
     /**
      * löschen des Geheimtextes
      */
-    public void delGeheimtext()
+    public void clearSecretText()
     {
-        geheimtext = "";
+        secrettext = "";
     }
     
     /**
@@ -217,12 +178,12 @@ public class CaesarModel extends  Observable
      * vom vorher festgelgten Geheimtext
      * mit caesar durch häufigkeitenanalyse
      */
-    public void autoEntschluesseln(){
+    public void autoDecode(){
     	
-    	delKlartext();
+    	clearPlaintext();
     	//Textanalyse der Häufigkeiten
         //erstelle neue Objekte zu Buchstabenhäufigkeitsanalyse
-        Haeufigkeit[] alphabet = new Haeufigkeit[26]; 
+        CharPrevalence[] alphabet = new CharPrevalence[26]; 
          
         //haeufigkeiten vergleichen
          
@@ -235,14 +196,14 @@ public class CaesarModel extends  Observable
         //mit der deutschen Häufigkeit
         //die geringste Differenz gewinnt das rennen 
         for(int i=1;i<=25;i++){
-        	alphabet[i-1] =new Haeufigkeit();
-            this.setSchluessel(i);
-            this.entschluesseln();
-        	alphabet[i-1].analyse(klartext);
+        	alphabet[i-1] =new CharPrevalence();
+            this.setKey(i);
+            this.encode();
+        	alphabet[i-1].analyse(plaintext);
         	
         	if(amBesten!=0){
         		//schleife
-        		aktDiff=alphabet[i-1].verteilungsdifferenz();
+        		aktDiff=alphabet[i-1].differences();
         		if(aktDiff<besteDiff){
             		amBesten=i;
             		besteDiff=aktDiff;
@@ -250,16 +211,16 @@ public class CaesarModel extends  Observable
         	}else{
         		//erste schleife
         		amBesten=1;
-        		besteDiff=alphabet[i-1].verteilungsdifferenz();
+        		besteDiff=alphabet[i-1].differences();
         	}
         	
         }
          
          //gefundenen schlüssel setzen
-         schluessel=amBesten;
+         key=amBesten;
 
          //Entschlüsselung mit dem besten Schluessel
-         this.entschluesseln();
+         this.encode();
 	
          //Observer benachrichtigen
          setChanged();

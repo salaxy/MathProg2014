@@ -1,16 +1,8 @@
-package kryptologie;
 
-/**
- * Klasse zur Bestimmung der relativen Häufigkeit von Buchstaben 
- * in einem Text
- * @author Andy Klay, Christoph Ott, Stephan Leddin
- * @version 28.10.2010
- */
-
-public class Haeufigkeit
+public class CharPrevalence
 {
 	/**
-	 * Sttribut fuer dei summen der buchstaben
+	 * summen
 	 */
      private int[] absolut=new int[26];
      /**
@@ -18,10 +10,7 @@ public class Haeufigkeit
       */
      private int anzahl=0;
 
-     /**
-      * Konstruktor der Klasse
-      */
-     public Haeufigkeit(){
+     public CharPrevalence(){
            //Feld mit 0 werten belegen
            for (int n = 0; n < 26; n++) {
                absolut[n] = 0;
@@ -59,66 +48,36 @@ public class Haeufigkeit
     
     /**
      * Ermittelt die Alphabet-Verteilungsdifferenz
-     * des alalysierten Textes zur deutschen Sprache 
-     * @return double - summe der differenzquadrate
      */
-    public double verteilungsdifferenz(){
-    	//Quelle für die häufigkeiten
+    public double differences(){
     	//http://de.wikipedia.org/wiki/Buchstabenh%C3%A4ufigkeit
-    	
-    	double[] deutsch=new double[26];
-    	//A
-    	deutsch[0]=6.51;
-    	//B
-    	deutsch[1]=1.89;
-    	//C
-    	deutsch[2]=3.06;
-    	//D
-    	deutsch[3]=5.06;
-    	//E
-    	deutsch[4]=17.40;
-    	//F
-    	deutsch[5]=1.66;
-    	//G
-    	deutsch[6]=3.01;
-    	//H
-    	deutsch[7]=4.76;
-    	//I
-    	deutsch[8]=7.55;
-    	//J
-    	deutsch[9]=0.27;
-    	//K
-    	deutsch[10]=1.21;
-    	//L
-    	deutsch[11]=3.44;
-    	//M
-    	deutsch[12]=2.53;
-    	//N
-    	deutsch[13]=9.78;
-    	//O
-    	deutsch[14]=2.51;
-    	//P
-    	deutsch[15]=0.79;
-    	//Q
-    	deutsch[16]=0.02;
-    	//R
-    	deutsch[17]=7.00;
-    	//S
-    	deutsch[18]=7.27;
-    	//T
-    	deutsch[19]=6.15;
-    	//U
-    	deutsch[20]=4.35;
-    	//V
-    	deutsch[21]=0.67;
-    	//W
-    	deutsch[22]=1.89;
-    	//X
-    	deutsch[23]=0.03;
-    	//Y
-    	deutsch[24]=0.04;
-    	//Z
-    	deutsch[25]=1.13;
+    	double[] german=new double[26];
+    	german[0]=6.51;
+    	german[1]=1.89;
+    	german[2]=3.06;
+    	german[3]=5.06;
+    	german[4]=17.40;
+    	german[5]=1.66;
+    	german[6]=3.01;
+    	german[7]=4.76;
+    	german[8]=7.55;
+    	german[9]=0.27;
+    	german[10]=1.21;
+    	german[11]=3.44;
+    	german[12]=2.53;
+    	german[13]=9.78;
+    	german[14]=2.51;
+    	german[15]=0.79;
+    	german[16]=0.02;
+    	german[17]=7.00;
+    	german[18]=7.27;
+    	german[19]=6.15;
+    	german[20]=4.35;
+    	german[21]=0.67;
+    	german[22]=1.89;
+    	german[23]=0.03;
+    	german[24]=0.04;
+    	german[25]=1.13;
     	
     	
     	double diff=0.0;
@@ -128,7 +87,7 @@ public class Haeufigkeit
     	//und summieren
     	for(int i=0;i<26;i++){
     		
-    		diff=relativ(i)-deutsch[i];
+    		diff=relativ(i)-german[i];
     		diff=diff*diff;
     		sumDiff+=diff;	
     	}
