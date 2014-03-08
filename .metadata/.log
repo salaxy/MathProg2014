@@ -1369,3 +1369,32 @@ Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.
 
 !ENTRY com.yoxos.yim.core 4 4 2014-03-08 18:21:21.542
 !MESSAGE Login With Persisted Credentials
+!SESSION 2014-03-08 18:22:53.590 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 4 4 2014-03-08 18:23:07.370
+!MESSAGE Plug-in 'com.yoxos.provisioning' contributed an invalid Menu Extension (Path: 'yoxos' is invalid): com.yoxos.provisioning.internal.ui.OpenProvisioningDialogAction
+
+!ENTRY com.yoxos.yim.core 4 4 2014-03-08 18:23:09.275
+!MESSAGE Login With Persisted Credentials
+!SESSION 2014-03-08 18:26:02.640 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 4 4 2014-03-08 18:26:16.639
+!MESSAGE Plug-in 'com.yoxos.provisioning' contributed an invalid Menu Extension (Path: 'yoxos' is invalid): com.yoxos.provisioning.internal.ui.OpenProvisioningDialogAction
+
+!ENTRY com.yoxos.yim.core 4 4 2014-03-08 18:26:19.348
+!MESSAGE Login With Persisted Credentials
+
+!ENTRY org.eclipse.debug.ui 4 0 2014-03-08 19:18:28.319
+!MESSAGE Tab group extension: org.eclipse.jdt.debug.ui.launchConfigurationTabGroup.remoteJavaApplication for type org.eclipse.jdt.launching.remoteJavaApplication for the * mode has been replaced by extension: org.jboss.tools.common.jdt.debug.ui.launching.launchConfigurationTabGroup.JBossRemoteJavaApplication2
