@@ -1,3 +1,4 @@
+package Aufgabe1;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -5,22 +6,27 @@ import javax.swing.*;
  * @author Alexandra Müller
  * @author Sebastian Röder
  * 
- * Aufgabenblatt 04 Prüfziffern
+ * Aufgabenblatt 02 Zahlendarstellung
+ * 	Aufgabenteil 1
  */
 
-
+/*
+ * Ein Programm zur Umwandlung von Zahlen 
+ * vom Dezimal- ins Dualsystem und umgekehrt
+ * mittels Horner-Schema.
+ */
 public class Frame extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public Frame(){
-		super("Prüfziffern");
+		super("Zahlendarstellung");
 		addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
 				System.exit(0);
 			}
 		});
-		IsbnModel model = new IsbnModel();
+		Model model = new Model();
 		View view = new View(model);
 		getContentPane().add(view);
 		setSize(500,200);
@@ -31,5 +37,4 @@ public class Frame extends JFrame {
 		Frame ef = new Frame();
 		ef.setVisible(true);
 	}
-
 }
