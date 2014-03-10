@@ -57,25 +57,34 @@ public class Model extends Observable {
 	
 	
 	// Umwandlung von dezimal zu dual
-	public void createDualzahl() {
+	public void createDualzahl() throws Exception {
 		int basis = 2;
 		int a = 0;
 		int number = dezimalZahl;
 		StringBuffer ergebnis = new StringBuffer("");
+		if(dezimalZahl == 0) {
+			throw new Exception("Es ist keine Werte eingetragen");
+		}
 		while (number != 0) {
 			a = number % basis;
 			number = number / basis;
 			ergebnis.append(a);
 		}
 		setDualOut(ergebnis.reverse().toString());
+		
+		setChanged();
+		notifyObservers();
 	}
 	
 
 	// Umwandlung von dual zu dezimal
 	
-	public void createDezimalzahl() {
+	public void createDezimalzahl() throws Exception {
 		int ergebnis = 0;
 		int basis = 2;
+		if(dualZahl.length() == 0) {
+			throw new Exception("Es ist keine Werte eingetragen");
+		}
 		char[] chars = dualZahl.toCharArray();
 		int[] numbers = new int[chars.length];
 		for (int i = 0; i < chars.length; i++) {
@@ -87,9 +96,12 @@ public class Model extends Observable {
 			ergebnis = ergebnis * basis + numbers[i];
 		}	
 		setDezimalOut(ergebnis);
+		
+		setChanged();
+		notifyObservers();
 	}
 	
-/*	public int createDezimalzahl() throws ZD1Exception {
+/*	public int createDezimalzahl()  {
 		int ergebnis = 0;
 		int basis = 2;
 		char[] chars = dualZahl.toCharArray();
@@ -109,13 +121,13 @@ public class Model extends Observable {
 		return ergebnis;
 	}*/
 	
-	public void createOutput() {
-		if (dezimalZahl == 0) {
-			createDualzahl();
-		} else if (dualZahl.length() == 0) {
-			createDezimalzahl();
-		}
-	}
+//	public void createOutput() {
+//		if (dezimalZahl == 0) {
+//			createDualzahl();
+//		} else if (dualZahl.length() == 0) {
+//			createDezimalzahl();
+//		}
+//	}
 	
 /*	public void createOutput() throws ZD1Exception {
 		if (dezimalZahl == 0) {
@@ -123,7 +135,7 @@ public class Model extends Observable {
 		} else if (dualZahl.length() == 0) {
 			createDezimalzahl();
 		} else {
-			throw new ZD1Exception("Es sind keine Werte eingetragen");
+			;
 		}
 		setChanged();
 		notifyObservers();
