@@ -83,13 +83,17 @@ public class Model extends Observable {
 		int ergebnis = 0;
 		int basis = 2;
 		if(dualZahl.length() == 0) {
-			throw new ZD1Exception("Es ist keine Werte eingetragen");
+			throw new ZD1Exception("Es ist kein Wert eingetragen");
 		}
 		char[] chars = dualZahl.toCharArray();
 		int[] numbers = new int[chars.length];
 		for (int i = 0; i < chars.length; i++) {
 			numbers[i] = Integer.parseInt(String.valueOf(chars[i]));
-			//TODO: Exception für nit-duale-Werte
+		}
+		for(int i = 0; i < chars.length; i++) {
+			if((numbers[i] != 0) && (numbers[i] != 1)) {
+				throw new ZD1Exception("Dies ist keine Dual-Zahl!");
+			}
 		}
 	//Berechnung
 		ergebnis = numbers[0];

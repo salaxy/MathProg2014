@@ -7,8 +7,8 @@ public class Model extends Observable{
 	public static final int MAX_VALUE = 2147483647;
 	
 	private String eingabe;
-	private String dualZahl;
-	private int basis1;
+//	private String dualZahl;
+//	private int basis1;
 	private int basis2;
 	private String ausgabe;
 	
@@ -17,9 +17,9 @@ public class Model extends Observable{
 		this.eingabe = new String (eingabe);
 	}
 	
-	public void setDualzahl(String dualZahl) {
-		this.dualZahl = new String(dualZahl);
-	}
+//	public void setDualzahl(String dualZahl) {
+//		this.dualZahl = new String(dualZahl);
+//	}
 	
 	public void setAusgabe(String ausgabe) {
 		this.ausgabe = new String(ausgabe);
