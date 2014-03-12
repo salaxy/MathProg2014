@@ -69,7 +69,6 @@ public class View extends JPanel implements ActionListener, Observer {
 		model.setBasis1(Integer.valueOf(eingabeBasisVon.getText()));
 		model.setBasis2(Integer.valueOf(eingabeBasisZu.getText()));
 		model.createOutput();
-		model.getOutput();
 	}
 
 	@Override
@@ -79,6 +78,6 @@ public class View extends JPanel implements ActionListener, Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		ausgabeZahl.setText(model.getOutput()+"");
+		ausgabeZahl.setText(model.getAusgabe()+"");
 	}
 }

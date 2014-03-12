@@ -19,6 +19,7 @@ public class Model extends Observable {
 	}
 
 	public void setDualZahl(String dual) {
+		
 		this.dualZahl = dual;
 	}
 
@@ -57,13 +58,13 @@ public class Model extends Observable {
 	
 	
 	// Umwandlung von dezimal zu dual
-	public void createDualzahl() throws Exception {
+	public void createDualzahl() throws ZD1Exception {
 		int basis = 2;
 		int a = 0;
 		int number = dezimalZahl;
 		StringBuffer ergebnis = new StringBuffer("");
 		if(dezimalZahl == 0) {
-			throw new Exception("Es ist keine Werte eingetragen");
+			throw new ZD1Exception("Es ist keine Werte eingetragen");
 		}
 		while (number != 0) {
 			a = number % basis;
@@ -78,17 +79,17 @@ public class Model extends Observable {
 	
 
 	// Umwandlung von dual zu dezimal
-	
-	public void createDezimalzahl() throws Exception {
+	public void createDezimalzahl() throws ZD1Exception {
 		int ergebnis = 0;
 		int basis = 2;
 		if(dualZahl.length() == 0) {
-			throw new Exception("Es ist keine Werte eingetragen");
+			throw new ZD1Exception("Es ist keine Werte eingetragen");
 		}
 		char[] chars = dualZahl.toCharArray();
 		int[] numbers = new int[chars.length];
 		for (int i = 0; i < chars.length; i++) {
 			numbers[i] = Integer.parseInt(String.valueOf(chars[i]));
+			//TODO: Exception für nit-duale-Werte
 		}
 	//Berechnung
 		ergebnis = numbers[0];
@@ -100,44 +101,4 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
-	
-/*	public int createDezimalzahl()  {
-		int ergebnis = 0;
-		int basis = 2;
-		char[] chars = dualZahl.toCharArray();
-		int[] numbers = new int[chars.length];
-		for (int i = 0; i < chars.length; i++) {
-			numbers[i] = Integer.parseInt(String.valueOf(chars[i]));
-		}
-		
-	// Berechnung
-	//1021(3) --> 34(10)
-	// x = (( 1 * 3 + 0 ) * 3 + 2 ) * 3 + 1
-		ergebnis = numbers[0];
-		for (int i = 1; i < numbers.length; i++) {
-			ergebnis = ergebnis * basis + numbers[i];
-		}	
-		setDezimalOut(ergebnis);
-		return ergebnis;
-	}*/
-	
-//	public void createOutput() {
-//		if (dezimalZahl == 0) {
-//			createDualzahl();
-//		} else if (dualZahl.length() == 0) {
-//			createDezimalzahl();
-//		}
-//	}
-	
-/*	public void createOutput() throws ZD1Exception {
-		if (dezimalZahl == 0) {
-			createDualzahl();
-		} else if (dualZahl.length() == 0) {
-			createDezimalzahl();
-		} else {
-			;
-		}
-		setChanged();
-		notifyObservers();
-	}*/
 }

@@ -81,7 +81,7 @@ public class View extends JPanel implements ActionListener, Observer {
 		} catch (NumberFormatException nfe) {
 			JOptionPane.showMessageDialog(this, "Falsches Zahlenformat",
 					"Eingabefehler", JOptionPane.ERROR_MESSAGE);
-		} catch (Exception zde) {
+		} catch (ZD1Exception zde) {
 			JOptionPane.showMessageDialog(this, zde.getMessage(),
 					"Eingabefehler", JOptionPane.ERROR_MESSAGE);
 		}

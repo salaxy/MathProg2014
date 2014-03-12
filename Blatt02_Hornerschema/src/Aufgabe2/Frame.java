@@ -7,6 +7,7 @@ import javax.swing.*;
  * @author Sebastian Röder
  * 
  * Aufgabenblatt 02 Zahlendarstellung
+ * Teilaufgabe 2
  */
 
 
