@@ -65,10 +65,10 @@ public class View extends JPanel implements ActionListener, Observer {
 	}
 	
 	private void readInput() {
-		model.setInput(Integer.valueOf(eingabeZahl.getText()));
+		model.setEingabe(eingabeZahl.getText());
 		model.setBasis1(Integer.valueOf(eingabeBasisVon.getText()));
 		model.setBasis2(Integer.valueOf(eingabeBasisZu.getText()));
-		model.createOutput();
+		model.createAusgabe();
 	}
 
 	@Override
