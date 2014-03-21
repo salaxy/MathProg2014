@@ -66,9 +66,17 @@ public class View extends JPanel implements ActionListener, Observer {
 	
 	private void readInput() {
 		model.setEingabe(eingabeZahl.getText());
-		model.setBasis1(Integer.valueOf(eingabeBasisVon.getText()));
-		model.setBasis2(Integer.valueOf(eingabeBasisZu.getText()));
-		model.createAusgabe();
+		try {
+			model.setBasis1(Integer.valueOf(eingabeBasisVon.getText()));
+			model.setBasis2(Integer.valueOf(eingabeBasisZu.getText()));
+			model.createZahl();
+		} catch (NumberFormatException nfe) {
+			JOptionPane.showMessageDialog(this,
+					"Falsches Zahlenformat","Eingabefehler",JOptionPane.ERROR_MESSAGE);
+		} catch (ZD2Exception zd2) {
+			JOptionPane.showMessageDialog(this, zd2.getMessage(),
+					"Eingabefehler", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	@Override

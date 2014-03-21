@@ -44,6 +44,7 @@ public class Model extends Observable {
 		b = 0;
 	}
 
+	// Formel für GGT
 	public void ggt() throws EuException {
 
 		if (a == 0 && b == 0) {
@@ -68,7 +69,8 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 
-	// Formel für Bezout Koeffizienten muss noch umgesetzt werden
+	// Formel für Bezout Koeffizienten
+	// erweiterter Euklid'scher Algorithmus
 	public void ggtPlusBezout() throws EuException {
 		if ((a == 0 && b == 0) || (a < 0) || (b < 0)) {
 			throw new EuException("Eingabe muss größer Null sein");
